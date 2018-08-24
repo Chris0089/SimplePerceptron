@@ -1,5 +1,4 @@
-# Even Python doesn't have 'variable declarations' I like to 'declare' them for organization
-# purposes
+# Even Python doesn't have 'variable declarations' I like to 'declare' them for organization purposes
 
 ACTIVATION_FUNCTION_TEXT = 'La salida es 0 si f(v) <= 0. La salida es 1 si f(v) > 0'
 FILENAME = 'data.txt'
@@ -62,7 +61,7 @@ class UserInterface:
         print("Hay " + str(size) + " pesos en el archivo. Necesitas escribir "
               + str(size) + " datos.")
         for element in range(size):
-            self.inputData.append(input('Escribe el valor ' + str(element+1) + ': '))
+            self.inputData.append(int(input('Escribe el valor ' + str(element+1) + ': ')))
 
 
 # Algorithm
