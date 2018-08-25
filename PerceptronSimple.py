@@ -10,6 +10,7 @@ class Perceptron:
     threshold = None
     output = None
     summation = None
+    v = None
 
     def get_data(self, input_list):
         for input_value in input_list:
@@ -32,6 +33,7 @@ class Perceptron:
         xw = [x * w for x, w in zip(self.input, self.weight)]
         self.summation = sum(xw)
         v = self.summation - self.threshold
+        self.v = v
         self.activation_function(v)
 
 
@@ -48,9 +50,9 @@ class DataAccessObject:
         for line in file:
             fields = line.split(" ")
             size = len(fields)
-            self.threshold = int(fields[0])
+            self.threshold = float(fields[0])
             for data in range(1, size):
-                self.weightData.append(int(fields[data]))
+                self.weightData.append(float(fields[data]))
         self.sizeWeightList = len(self.weightData)
 
 
@@ -61,7 +63,7 @@ class UserInterface:
         print("Hay " + str(size) + " pesos en el archivo. Necesitas escribir "
               + str(size) + " datos.")
         for element in range(size):
-            self.inputData.append(int(input('Escribe el valor ' + str(element+1) + ': ')))
+            self.inputData.append(float(input('Escribe el valor ' + str(element+1) + ': ')))
 
 
 # Algorithm
@@ -76,6 +78,7 @@ print('Entradas: ' + str(perceptron.input))
 print('Pesos: ' + str(perceptron.weight))
 print('Umbral: ' + str(perceptron.threshold))
 print('Sumatoria: ' + str(perceptron.summation))
+print('V: ' + str(perceptron.v))
 print(ACTIVATION_FUNCTION_TEXT)
 
 print(" La salida de este perceptron es " + str(perceptron.output) + ".")
